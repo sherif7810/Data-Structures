@@ -26,6 +26,23 @@ impl<T> LinkedList<T> {
             }
         }
     }
+
+    pub fn len(&self) -> usize {
+        let mut len = 0;
+
+        let mut current_node = &self.start_node;
+        loop {
+            match current_node {
+                Some(node) => {
+                    len += 1;
+                    current_node = &node.next_node;
+                },
+                None => { break; }
+            };
+        }
+
+        len
+    }
 }
 
 impl<T: Clone> std::ops::Index<usize> for LinkedList<T> {
@@ -108,5 +125,25 @@ mod test {
         for i in range {
             assert_eq!(linked_list[i], i12[i]);
         }
+    }
+
+    #[test]
+    fn len() {
+        let mut linked_list = LinkedList::new();
+
+        assert_eq!(linked_list.len(), 0);
+
+        let data1 = &[0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+        let data2 = &[0, 1];
+
+        for data in data1 {
+            linked_list.add(data);
+        }
+        assert_eq!(linked_list.len(), data1.len());
+
+        for data in data2 {
+            linked_list.add(data);
+        }
+        assert_eq!(linked_list.len(), data1.len() + data2.len());
     }
 }

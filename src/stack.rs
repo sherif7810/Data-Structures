@@ -42,4 +42,24 @@ mod test {
             assert_eq!(stack2.pop().unwrap(), data);
         }
     }
+
+    #[test]
+    fn len() {
+        let mut stack = Stack::new();
+
+        assert_eq!(stack.len(), 0);
+
+        let data1 = &[0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+        let data2 = &[0, 1];
+
+        for data in data1 {
+            stack.push(data);
+        }
+        assert_eq!(stack.len(), data1.len());
+
+        for data in data2 {
+            stack.push(data);
+        }
+        assert_eq!(stack.len(), data1.len() + data2.len());
+    }
 }
