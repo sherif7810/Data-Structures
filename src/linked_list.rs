@@ -8,10 +8,12 @@ pub struct LinkedList<T> {
 }
 
 impl<T> LinkedList<T> {
+    /// Constructs a new empty `LinkedList<T>`.
     pub fn new() -> Self {
         LinkedList { start_node: None }
     }
 
+    /// Appends an element to the end of collection.
     pub fn add(&mut self, value: T) {
         let mut node_option = &mut self.start_node;
 
@@ -27,6 +29,7 @@ impl<T> LinkedList<T> {
         }
     }
 
+    /// Returns the number of elements.
     pub fn len(&self) -> usize {
         let mut len = 0;
 

@@ -1,12 +1,16 @@
+/// A stack.
 pub struct Stack<T> {
     data: Vec<T>
 }
 
 impl<T> Stack<T> {
+    /// Constructs a new empty stack.
     pub fn new() -> Self { Self { data: Vec::new() } }
 
+    /// Appends element to the top of the stack
     pub fn push(&mut self, t: T) { self.data.push(t); }
 
+    /// Removes the top element.
     pub fn pop(&mut self) -> Option<T> {
         match self.data.pop() {
             Some(t) => Some(t),
@@ -14,6 +18,7 @@ impl<T> Stack<T> {
         }
     }
 
+    /// Returns the number of elements in the stack.
     pub fn len(&self) -> usize { self.data.len() }
 }
 
