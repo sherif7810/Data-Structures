@@ -48,7 +48,7 @@ impl<T> LinkedList<T> {
     }
 }
 
-impl<T: Clone> std::ops::Index<usize> for LinkedList<T> {
+impl<T> std::ops::Index<usize> for LinkedList<T> {
     type Output = T;
 
     fn index(&self, index: usize) -> &Self::Output {
